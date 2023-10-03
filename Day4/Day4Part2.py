@@ -14,10 +14,10 @@ In how many assignment pairs do the ranges overlap?
 '''
 
 def main():
-    file_name = 'Day4Input.txt'
-    day4_input = input_converter(file_name)
-    results = entire_range_counter(day4_input)
-    print(results)
+    file_name = 'Day4Input.txt'                # Raw input file
+    day4_input = input_converter(file_name)    # Input file cleaned up for iteration
+    results = entire_range_counter(day4_input) # The answer to Day 4 part 2 Puzzle
+    print(results)                             # Returns 895
 
 
 
@@ -36,14 +36,20 @@ def input_converter(file_name):
     return final_input
 
 def entire_range_counter(input_file):
-    a = 0
+    """
+    :param input_file: The cleaned version of the input split into a list of lists
+    :return:
+    The count of how many lists have over lap in pairs [0,1] or [2,3] by checking if [2] or [3] falls between [0,1] or
+    if [0] or [1] falls between [2,3]
+    """
+    overlap_counter = 0
     for i in input_file:
         if (int(i[0]) <= int(i[2]) <= int(i[1])) or\
                 (int(i[2]) <= int(i[0]) <= int(i[3])) or \
                 (int(i[0]) <= int(i[3]) <= int(i[1]))or \
                 (int(i[2]) <= int(i[1]) <= int(i[3])):
-            a += 1
-    return a
+            overlap_counter += 1
+    return overlap_counter
 
 if __name__ == '__main__':
     main()
