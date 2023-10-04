@@ -1,0 +1,1 @@
+Treat each column as a rop and .pop()/add from each based on negative indexes
